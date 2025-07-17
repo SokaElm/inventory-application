@@ -2,17 +2,18 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const path = require("node:path");
-const customNotFoundError = require("./errors/customNotFoundError");
+// const customNotFoundError = require("./errors/customNotFoundError");
 const db = require("./db/queries");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-const indexRouter = require("./routes/indexRouter");
-const itemRouter = require("./routes/itemRouter.js/index.js");
+const indexRouter = require("./routes/indexRouter.js");
+const itemRouter = require("./routes/itemRouter.js");
 const categoryRouter = require("./routes/categoryRouter.js");
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 const links = [
   { href: "/", text: "Home" },
@@ -20,23 +21,23 @@ const links = [
   { href: "/category", text: "Categories" },
 ];
 
-// let initialMessages = [];
+let initialItemList = [];
 
-// async function getInitialMessage() {
-//   initialMessages = await db.getAllMessages();
-// }
+async function getInitialItemList() {
+  initialItemList = await db.getAllItems();
+}
 
-// getInitialMessage();
+getInitialItemList();
 
-// app.use(async (req, res, next) => {
-//   res.locals.messages = initialMessages;
-//   res.locals.links = links;
-//   next();
-// });
+app.use(async (req, res, next) => {
+  res.locals.itemList = initialItemList;
+  res.locals.links = links;
+  next();
+});
 
-// app.use("/", indexRouter);
-// app.use("/new", newRouter);
-// app.use("/message", messageRouter);
+app.use("/", indexRouter);
+app.use("/item", itemRouter);
+app.use("/category", categoryRouter);
 
 // app.use((req, res, next) => {
 //   next(new customNotFoundError("Page not found"));
@@ -51,7 +52,7 @@ const links = [
 //   res.status(status).render("error", { message, status });
 // });
 
-const PORT = 5432;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`My first Express app - listening on port ${PORT}!`);
 });

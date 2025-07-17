@@ -1,26 +1,30 @@
-<head>
-    <link rel="stylesheet" href="/styles.css">
-  </head>
-  
-  <html>
-    <body>
-      <%- include('navbar', {links: links}) %>
-  
-      <ul>
-        <!-- <% items.forEach((item) => { %>
-            <li><%= user %></li>
-            <img
-            src={item.image}
-            alt={card.name}
-            
-          />
-          <p>
-            <b>{card.name}</b>
-          </p> -->
+<!DOCTYPE html>
 
-        <% }); %>
-      </ul>
-  
-  
-    </body>
-  </html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <%- include('navbar', {links: links}) %>
+    <h1>All products</h1>
+    <ul class="itemCards">
+      <% for (let i = 0; i < items.length; i++) { %>
+      <li class="item">
+        <img src="<%=items[i].img%>" alt="<%=items[i].title%>" />
+        <div class="cardHeader">
+          <p><%=items[i].title%></p>
+          <p><%=items[i].price%></p>
+        </div>
+
+        <p class="brand"><%=items[i].brand%></p>
+        Quantity: <%= items[i].stock %>
+
+        <div class="item-card <%= items[i].category %>">
+          <%=items[i].category%>
+        </div>
+      </li>
+      <% }; %>
+    </ul>
+  </body>
+</html>

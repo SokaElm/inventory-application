@@ -9,7 +9,7 @@ async function getItems() {
   
     const items = data.products.map(product => ({
       title: product.title,
-      category: product.category,
+      category: product.category.charAt(0).toUpperCase() + product.category.slice(1).toLowerCase(),
       stock: product.stock,
       brand: product.brand||'',
       img: product.images[0],

@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+body {
+  font-family: "Outfit";
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+ul.navbarLinks {
+  background-color: #333;
+}
+
+ul.navbarLinks li {
+  float: left;
+}
+
+ul.navbarLinks li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.navbarLinks a:hover {
+  background-color: #111;
+}
+
+img {
+  width: 80px;
+}
+
+ul.itemCards {
+  display: grid;
+  grid-template-columns: repeat(5, 190px);
+  row-gap: 32px;
+  column-gap: 32px;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px 0px;
+  padding: 32px;
+  width: 1078px;
+  margin: 0 auto;
+}
+
+li.item {
+  border-radius: 16px;
+  background-color: rgba(230, 255, 230, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin-left: 155px;
+  font-size: 40px;
+}
+
+a.links {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 16px;
+  background-color: rgba(230, 255, 230, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px 0px;
+  font-size: 48px;
+  padding: 32px;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 155px;
+  margin-right: 155px;
+}
