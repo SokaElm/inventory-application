@@ -7,7 +7,7 @@
 
   <body>
     <%- include('navbar', {links: links}) %>
-    <h1>All products</h1>
+    <h1><%=title%></h1>
     <ul class="itemCards">
       <% for (let i = 0; i < items.length; i++) { %>
       <li class="item">

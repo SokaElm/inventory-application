@@ -21,16 +21,7 @@ const links = [
   { href: "/category", text: "Categories" },
 ];
 
-let initialItemList = [];
-
-async function getInitialItemList() {
-  initialItemList = await db.getAllItems();
-}
-
-getInitialItemList();
-
 app.use(async (req, res, next) => {
-  res.locals.itemList = initialItemList;
   res.locals.links = links;
   next();
 });
