@@ -74,10 +74,22 @@ async function postUpdateItem(req, res) {
   });
 }
 
+async function deleteItem(req, res) {
+  const itemId = req.params.id;
+
+  await db.deleteItem(itemId);
+
+  res.render("index", {
+    links: res.locals.links,
+    title: "Item has successfully been deleted !",
+  });
+}
+
 module.exports = {
   showItems,
   showNewItemForm,
   postNewItem,
   updateItemForm,
   postUpdateItem,
+  deleteItem,
 };

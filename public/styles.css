@@ -47,7 +47,6 @@ ul.categoryCards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   justify-content: center;
-  max-width: 100%;
   border-radius: 16px;
   gap: 32px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px 0px;
@@ -61,23 +60,32 @@ ul.categoryCards {
   border-radius: 16px;
   background-color: rgba(230, 255, 230, 0.15);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 .category {
   background-color: rgba(230, 255, 230, 0.15);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px 0px;
   border-radius: 8px;
-  padding: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.categoryName {
+  padding: 50px;
 }
 
 .itemInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0 10px 10px 10px;
   text-align: center;
+  flex-grow: 1;
 }
 
 .title {
@@ -139,4 +147,25 @@ p {
 
 p.itemTitle {
   font-weight: bold;
+}
+
+.cardButtons {
+  display: flex;
+  align-self: flex-end;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.updateButton {
+  background-color: #b0e3ee;
+  border-radius: 8px;
+  padding: 5px;
+  text-align: center;
+}
+
+.deleteButton {
+  background-color: rgb(255, 128, 128);
+  border-radius: 8px;
+  padding: 5px;
+  text-align: center;
 }

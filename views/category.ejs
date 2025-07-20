@@ -15,9 +15,25 @@
     <ul class="categoryCards">
       <% for (let i = 0; i < categories.length; i++) { %>
       <li class="category">
-        <a href="category/<%= categories[i].category%>">
-          <%=categories[i].category%></a
-        >
+        <div class="categoryName">
+          <a href="category/<%= categories[i].category%>">
+            <%=categories[i].category%></a
+          >
+        </div>
+        <div class="cardButtons">
+          <a
+            href="/category/<%=categories[i].id%>/update/"
+            class="updateButton"
+          >
+            Update
+          </a>
+          <a
+            href="/category/<%=categories[i].id%>/delete/%>"
+            class="deleteButton"
+          >
+            Delete
+          </a>
+        </div>
       </li>
       <% }; %>
     </ul>

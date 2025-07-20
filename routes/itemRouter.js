@@ -5,6 +5,7 @@ const {
   postNewItem,
   updateItemForm,
   postUpdateItem,
+  deleteItem,
 } = require("../controllers/itemController.js");
 
 const itemRouter = Router();
@@ -14,5 +15,6 @@ itemRouter.get("/create", showNewItemForm);
 itemRouter.post("/create", postNewItem);
 itemRouter.get("/:id/update", updateItemForm);
 itemRouter.post("/:id/update", postUpdateItem);
+itemRouter.get("/:id/delete", deleteItem);
 
 module.exports = itemRouter;

@@ -18,7 +18,7 @@ async function getAllItems() {
 }
 
 async function getAllCategories() {
-  const { rows } = await pool.query("SELECT DISTINCT category FROM categories");
+  const { rows } = await pool.query("SELECT * FROM categories");
   return rows;
 }
 
@@ -47,7 +47,7 @@ async function insertNewItem(title, img, brand, stock, categoryId, price) {
 
 async function updateItem(title, img, brand, stock, categoryId, price, itemId) {
   await pool.query(
-    "UPDATE items SET title = $1, category_id =$2, stock =$3, brand = $4, img=$5, price =$6 WHERE items.id=$7",
+    "UPDATE items SET title = $1, category_id =$2, stock =$3, brand = $4, img=$5, price =$6 WHERE id=$7",
     [title, categoryId, stock, brand, img, price, itemId]
   );
 }
@@ -71,6 +71,26 @@ async function getCategoryName(categoryId) {
   return rows[0].category;
 }
 
+async function deleteItem(itemId) {
+  await pool.query("DELETE FROM items WHERE id=$1", [itemId]);
+}
+
+async function updateCategory(category, categoryId) {
+  await pool.query("UPDATE categories SET category = $1 WHERE id=$2", [
+    category,
+    categoryId,
+  ]);
+}
+
+async function deleteCategory(categoryId) {
+  const newCategoryId = await getCategoryId("Other");
+  await pool.query("UPDATE items SET category_id =$1 WHERE category_id=$2", [
+    newCategoryId,
+    categoryId,
+  ]);
+  await pool.query("DELETE FROM categories WHERE id=$1", [categoryId]);
+}
+
 module.exports = {
   getAllItems,
   getAllCategories,
@@ -81,4 +101,7 @@ module.exports = {
   getItemById,
   getCategoryName,
   updateItem,
+  deleteItem,
+  updateCategory,
+  deleteCategory,
 };

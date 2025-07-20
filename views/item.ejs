@@ -27,15 +27,15 @@
           <p class="brand">Brand: <%=items[i].brand%></p>
           <p>Price: <%=items[i].price%>$</p>
           <p>Quantity: <%= items[i].stock %></p>
-        </div>
 
-        <div class="cardButtons">
-          <a href="/item/<%=items[i].id%>/update/" class="cardButtons">
-            Update
-          </a>
-          <a href="/item/<%=items[i].id%>/delete/%>" class="cardButton">
-            Delete
-          </a>
+          <div class="cardButtons">
+            <a href="/item/<%=items[i].id%>/update/" class="updateButton">
+              Update
+            </a>
+            <a href="/item/<%=items[i].id%>/delete/%>" class="deleteButton">
+              Delete
+            </a>
+          </div>
         </div>
       </li>
       <% }; %>
