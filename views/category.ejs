@@ -7,11 +7,15 @@
 
   <body>
     <%- include('navbar', {links: links}) %>
-    <h1>All categories</h1>
+    <div class="title">
+      <h1>All categories</h1>
+      <a href="/category/create" class="addButton"> Add a Category </a>
+    </div>
+
     <ul class="categoryCards">
       <% for (let i = 0; i < categories.length; i++) { %>
       <li class="category">
-        <a href="<%= `${links[2].href}/${categories[i].category}`%>">
+        <a href="category/<%= categories[i].category%>">
           <%=categories[i].category%></a
         >
       </li>
