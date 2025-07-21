@@ -4,5 +4,5 @@ const isProd = process.env.NODE_ENV === "production";
 
 module.exports = new Pool({
   connectionString: process.env.CONNECTIONTOSTRING_PROD,
-  ssl: false,
+  ssl: isProd ? { rejectUnauthorized: false } : false,
 });

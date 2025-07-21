@@ -36,9 +36,12 @@ async function stringifyItems() {
 
 async function main() {
   console.log("seeding...");
+  const isProd = process.env.NODE_ENV === "production";
   const client = new Client({
-    connectionString: process.env.CONNECTIONTOSTRING_PROD,
-    ssl: false,
+    connectionString: isProd
+      ? process.env.CONNECTIONTOSTRING_PROD
+      : process.env.CONNECTIONTOSTRING_DEV,
+    ssl: isProd ? { rejectUnauthorized: false } : false,
   });
 
   const values = await stringifyItems();
