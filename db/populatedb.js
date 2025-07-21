@@ -39,8 +39,8 @@ async function main() {
   const isProd = process.env.NODE_ENV === "production";
   const client = new Client({
     connectionString: isProd
-      ? process.env.CONNECTIONTOSTRING_PROD
-      : process.env.CONNECTIONTOSTRING_DEV,
+      ? process.env.CONNECTIONSTRING_PROD
+      : process.env.CONNECTIONSTRING_DEV,
     ssl: isProd ? { rejectUnauthorized: false } : false,
   });
 
