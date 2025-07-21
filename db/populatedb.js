@@ -37,13 +37,16 @@ async function stringifyItems() {
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: process.env.CONNECTIONTOSTRING,
+    connectionString: process.env.CONNECTIONTOSTRING_DEV,
     ssl: false,
   });
 
   const values = await stringifyItems();
 
   const SQL = `
+
+DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS categories;
 
 CREATE TABLE IF NOT EXISTS items (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,

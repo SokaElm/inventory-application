@@ -1,7 +1,8 @@
 const { Pool } = require("pg");
 
+const isProd = process.env.NODE_ENV === "production";
+
 module.exports = new Pool({
-  connectionString: process.env.CONNECTIONTOSTRING,
+  connectionString: process.env.CONNECTIONTOSTRING_DEV,
   ssl: false,
-  
 });
