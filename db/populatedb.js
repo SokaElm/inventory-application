@@ -37,7 +37,7 @@ async function stringifyItems() {
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: process.env.CONNECTIONTOSTRING_DEV,
+    connectionString: process.env.CONNECTIONTOSTRING_PROD,
     ssl: false,
   });
 
